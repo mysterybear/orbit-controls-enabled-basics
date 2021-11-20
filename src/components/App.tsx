@@ -1,13 +1,13 @@
 import { a, useSpring } from "@react-spring/three"
+import { OrbitControls } from "@react-three/drei"
 import { Canvas, useThree } from "@react-three/fiber"
 import { useDrag } from "@use-gesture/react"
-import { Fragment, PropsWithChildren, useRef, useState } from "react"
-import { OrbitControls } from "@react-three/drei"
-import HorizontalPlane from "./HorizontalPlane"
+import { Fragment, PropsWithChildren } from "react"
 import { AppProvider, useApp } from "./AppContext"
+import HorizontalPlane from "./HorizontalPlane"
 
-const AppScene = () => {
-  const { horizontalPointer, orbitControlsEnabled, set } = useApp()
+const Box = () => {
+  const { horizontalPointer, set } = useApp()
 
   const [spring, setSpring] = useSpring(() => ({
     position: [0, 0, 0],
@@ -51,7 +51,7 @@ const App = () => (
   <Canvas camera={{ position: [10, 10, 10] }}>
     <AppProvider>
       <AppSceneWrapper>
-        <AppScene />
+        <Box />
       </AppSceneWrapper>
     </AppProvider>
   </Canvas>
